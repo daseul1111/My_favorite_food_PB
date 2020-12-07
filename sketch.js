@@ -1,7 +1,8 @@
-let bg;
+PImage bg;
 
+//background setting
 function setup() {
-  bg = loadImage("assets/pizza.jpg");
+  bg = loadImage('pizza.jpg');
   createCanvas(500, 500);
 }
 
