@@ -1,5 +1,4 @@
-//PImage bg;
-var beer={x:250, y:250};
+let beers = []
 let pizza;
 
 function preload() {
@@ -8,26 +7,46 @@ function preload() {
 //background setting
 function setup() {
   createCanvas(400, 400);
+for (let i = 0; i<4; i++) {
+  let x = random(width);
+  let y = random(height);
+  bubbles[i] = new Beer(x,y);
+  }
 }
 
 function draw () {
-  //background(bg);
   background(220);
   image(pizza,0,0);
   noLoop();
 
-  //draw beer
+  for (let i=0; i< beers.length; i++) {
+    beers[i].move();
+    beers[i].show();
+  }
+}
+
+class Beer {
+  constructor(x,y){
+    this.x = x;
+    this.y = y;
+  }
+
+move(){
+  this.x = this.x + random(-5,5);
+  this.y = this.y + random(-5,5);
+}
+
+show() {
   stroke(0);
   strokeWeight(5);
-  line(beer.x-10,beer.y-90,beer.x+15,beer.y-90); //병입구
-  line(beer.x-10,beer.y-90,beer.x-15,beer.y-35); //병 목 왼쪽
-  line(beer.x-15,beer.y-35,beer.x-25,beer.y-30);
-  line(beer.x-25,beer.y-30,beer.x-25,beer.y+50);
-  bezier(beer.x-25,beer.y+50,beer.x-30,beer.y+60,
-    beer.x+30,beer.y+60,beer.x+30,beer.y+50); //병 바닥
-  line(beer.x+30,beer.y+50,beer.x+30,beer.y-30);
-  line(beer.x+30,beer.y-30,beer.x+20,beer.y-35);
-  line(beer.x+20,beer.y-35,beer.x+15,beer.y-90); //병 목 오른쪽
-
-  beer.x = beer.x +1;
+  line(this.x-10,this.y-90,this.x+15,this.y-90); //병입구
+  line(this.x-10,this.y-90,this.x-15,this.y-35); //병 목 왼쪽
+  line(this.x-15,this.y-35,this.x-25,this.y-30);
+  line(this.x-25,this.y-30,this.x-25,this.y+50);
+  bezier(this.x-25,this.y+50,this.x-30,this.y+60,
+    this.x+30,this.y+60,this.x+30,this.y+50); //병 바닥
+  line(this.x+30,this.y+50,this.x+30,this.y-30);
+  line(this.x+30,this.y-30,this.x+20,this.y-35);
+  line(this.x+20,this.y-35,this.x+15,this.y-90); //병 목 오른쪽
+  }
 }
