@@ -8,7 +8,7 @@ function preload() {
 }
 //background setting
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(400, 400);
 }
 
 function draw () {
@@ -20,12 +20,12 @@ function draw () {
   //draw beer
   stroke(0);
   strokeWeight(5);
-  line(x-5,y-60,x+5,y-60);
-  line(x-5,y-60,x-10,y-25);
-  line(x-10,y-25,x-20,y-20);
-  line(x-20,y-20,x-20,y+40);
-  bezier(x-20,y+40,x-20,y+50,x+20,y+50,x+20,y+40);
-  line(x+20,y+40,x+20,y-20);
-  line(x+20,y-20,x+10,y-25);
-  line(x+10,y-25,x+5,y-60);
+  line(x-15,y-70,x+15,y-70);
+  line(x-15,y-70,x-20,y-35);
+  line(x-20,y-35,x-30,y-30);
+  line(x-30,y-30,x-30,y+50);
+  bezier(x-30,y+50,x-30,y+60,x+30,y+60,x+30,y+50);
+  line(x+30,y+50,x+30,y-30);
+  line(x+30,y-30,x+20,y-35);
+  line(x+20,y-35,x+15,y-70);
 }
