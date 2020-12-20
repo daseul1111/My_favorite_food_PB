@@ -1,3 +1,6 @@
+let x =1;
+let y =1;
+let easing = 0.1;
 let pizza;
 let numBalls = 4;
 let spring = 0.07;
@@ -22,13 +25,13 @@ function setup() {
 function draw() {
   background(220);
   image(pizza,0,0);
-  //noLoop();
 
   balls.forEach(ball => {
     ball.collide();
     ball.move();
     ball.display();
   });
+
 }
 
 class Ball {
@@ -43,6 +46,14 @@ class Ball {
   }
 
   collide() {
+    if (mouseIsPressed){
+      let targetX = mouseX;
+      let dx = targetX - this.x;
+      this.x+= dx * easing;
+      let targetY = mouseY;
+      let dy = mouseY - this.y;
+      this.y+= dy * easing;
+    };
     for (let i = this.id + 1; i < numBalls; i++) {
       // console.log(others[i]);
       let dx = this.others[i].x - this.x;
@@ -63,7 +74,7 @@ class Ball {
         this.others[i].vx += ax;
         this.others[i].vy += ay;
       }
-    }
+  }
   }
 //가장 자리 튕기기
   move() {
